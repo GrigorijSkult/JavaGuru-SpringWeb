@@ -1,10 +1,10 @@
-package com.studentrepository.book.service;
+package com.bookrepository.book.service;
 
-import com.studentrepository.book.domain.BookEntity;
-import com.studentrepository.book.dto.BookDto;
-import com.studentrepository.book.mappers.BookMapper;
-import com.studentrepository.book.repository.BookRepository;
-import com.studentrepository.projectUtilites.exceptions.*;
+import com.bookrepository.book.domain.BookEntity;
+import com.bookrepository.book.dto.BookDto;
+import com.bookrepository.book.mappers.BookMapper;
+import com.bookrepository.book.repository.BookRepository;
+import com.bookrepository.repositoryutilities.exceptions.ItemNotFound;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -32,5 +32,10 @@ public class BookService {
                 .orElseThrow(() -> new ItemNotFound("Book with ID '" + id + "' is not found"));
     }
 
-//    public void deleteById
+    public void deleteBookById(String id) {
+        if (!bookRepository.existsById(id)) {
+            throw new ItemNotFound("Book with ID '" + id + "' is not found");
+        }
+        bookRepository.deleteById(id);
+    }
 }

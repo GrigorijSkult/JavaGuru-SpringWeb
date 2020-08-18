@@ -1,12 +1,12 @@
-package com.studentrepository;
+package com.bookrepository;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class StudentRepositoryApplication {
+public class BookRepositoryApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(StudentRepositoryApplication.class, args);
+        SpringApplication.run(BookRepositoryApplication.class, args);
     }
 }

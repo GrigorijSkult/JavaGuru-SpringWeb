@@ -1,7 +1,7 @@
-package com.studentrepository.book.mappers;
+package com.bookrepository.book.mappers;
 
-import com.studentrepository.book.domain.BookEntity;
-import com.studentrepository.book.dto.BookDto;
+import com.bookrepository.book.domain.BookEntity;
+import com.bookrepository.book.dto.BookDto;
 import org.springframework.stereotype.Service;
 
 @Service

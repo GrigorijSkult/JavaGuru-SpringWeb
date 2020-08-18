@@ -1,4 +1,4 @@
-package com.studentrepository.book.dto;
+package com.bookrepository.book.dto;
 
 import java.util.Objects;
 

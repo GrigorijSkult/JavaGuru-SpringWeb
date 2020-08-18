@@ -1,4 +1,4 @@
-package com.studentrepository.book.domain;
+package com.bookrepository.book.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

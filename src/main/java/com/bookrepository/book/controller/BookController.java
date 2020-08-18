@@ -1,7 +1,8 @@
-package com.studentrepository.book.controller;
+package com.bookrepository.book.controller;
 
-import com.studentrepository.book.dto.BookDto;
-import com.studentrepository.book.service.BookService;
+import com.bookrepository.book.dto.BookDto;
+import com.bookrepository.book.service.BookService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -20,14 +21,20 @@ public class BookController {
 
     @GetMapping
     public BookDto findAllBooks() {
-        return new BookDto(UUID.randomUUID().toString(), "Test_Azazel"
-        );
+        return new BookDto(UUID.randomUUID().toString(), "Test_Azazel");
     }
 
     @GetMapping("/{id}")
     public BookDto findBookById(@PathVariable String id) {
-        System.out.println("Received request of book with id " + id);
+        System.out.println("Received request, find book with ID " + id);
         return bookService.findBookById(id);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
+    public void deleteBook(@PathVariable String id) {
+        System.out.println("Received request, delete book with ID " + id);
+        bookService.deleteBookById(id);
     }
 
     @PostMapping
@@ -39,7 +46,7 @@ public class BookController {
                         .buildAndExpand(response.getId()).toUri()).build();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}")//+ привязка к сервису
     public void updateStudent(@PathVariable String id, @RequestBody BookDto updatedBookDto) {
         System.out.println("Received request, update for book with ID " + id);
         System.out.println("Received request, book updated" + updatedBookDto);
