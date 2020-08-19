@@ -2,15 +2,15 @@ package com.bookrepository.book.dto;
 
 import java.util.Objects;
 
-public class BookDto {
+public class BookResponse {
 
     private String id;
     private String book;
 
-    public BookDto() {
+    public BookResponse() {
     }
 
-    public BookDto(String id, String book) {
+    public BookResponse(String id, String book) {
         this.id = id;
         this.book = book;
     }
@@ -35,9 +35,9 @@ public class BookDto {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BookDto bookDto = (BookDto) o;
-        return Objects.equals(id, bookDto.id) &&
-                Objects.equals(book, bookDto.book);
+        BookResponse bookResponse = (BookResponse) o;
+        return Objects.equals(id, bookResponse.id) &&
+                Objects.equals(book, bookResponse.book);
     }
 
     @Override
