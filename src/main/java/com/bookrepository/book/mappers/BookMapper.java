@@ -10,14 +10,16 @@ public class BookMapper {
     public BookEntity bookToEntity(BookResponse bookResponse) {
         return new BookEntity(
                 bookResponse.getId(),
-                bookResponse.getBook()
+                bookResponse.getBook(),
+                bookResponse.getBookDescription()
         );
     }
 
-    public BookResponse bookToDto(BookEntity bookEntity) {
+    public BookResponse bookToResponse(BookEntity bookEntity) {
         return new BookResponse(
                 bookEntity.getId(),
-                bookEntity.getBookName()
+                bookEntity.getBookName(),
+                bookEntity.getBookDescription()
         );
     }
 }

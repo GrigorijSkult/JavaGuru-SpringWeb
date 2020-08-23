@@ -1,28 +1,23 @@
-package com.bookrepository.book.domain;
+package com.bookrepository.book.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
-@Entity
-@Table(name = "books")
-public class BookEntity {
+public class BookUpdateRequest {
 
-    @Id
-    private String id;
     @NotEmpty
-    @Size(min=1, max = 30)
-    private String bookName;
+    String id;
+    @NotEmpty
+    @Size(min = 2, max = 20)
+    String bookName;
     @Size(max = 2000)
     private String bookDescription;
 
-    public BookEntity() {
+    public BookUpdateRequest() {
     }
 
-    public BookEntity(String id, String bookName, String bookDescription) {
+    public BookUpdateRequest(@NotEmpty String id, @NotEmpty @Size(min = 2, max = 20) String bookName, @Size(max = 2000) String bookDescription) {
         this.id = id;
         this.bookName = bookName;
         this.bookDescription = bookDescription;
@@ -52,12 +47,11 @@ public class BookEntity {
         this.bookDescription = bookDescription;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BookEntity that = (BookEntity) o;
+        BookUpdateRequest that = (BookUpdateRequest) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(bookName, that.bookName) &&
                 Objects.equals(bookDescription, that.bookDescription);
@@ -70,7 +64,7 @@ public class BookEntity {
 
     @Override
     public String toString() {
-        return "BookEntity{" +
+        return "BookUpdateRequest{" +
                 "id='" + id + '\'' +
                 ", bookName='" + bookName + '\'' +
                 ", bookDescription='" + bookDescription + '\'' +

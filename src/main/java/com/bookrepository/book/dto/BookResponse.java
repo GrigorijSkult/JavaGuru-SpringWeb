@@ -6,8 +6,15 @@ public class BookResponse {
 
     private String id;
     private String book;
+    private String bookDescription;
 
     public BookResponse() {
+    }
+
+    public BookResponse(String id, String book, String bookDescription) {
+        this.id = id;
+        this.book = book;
+        this.bookDescription = bookDescription;
     }
 
     public BookResponse(String id, String book) {
@@ -31,25 +38,35 @@ public class BookResponse {
         this.book = book;
     }
 
+    public String getBookDescription() {
+        return bookDescription;
+    }
+
+    public void setBookDescription(String bookDescription) {
+        this.bookDescription = bookDescription;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BookResponse bookResponse = (BookResponse) o;
-        return Objects.equals(id, bookResponse.id) &&
-                Objects.equals(book, bookResponse.book);
+        BookResponse that = (BookResponse) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(book, that.book) &&
+                Objects.equals(bookDescription, that.bookDescription);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, book);
+        return Objects.hash(id, book, bookDescription);
     }
 
     @Override
     public String toString() {
-        return "BookDto{" +
+        return "BookResponse{" +
                 "id='" + id + '\'' +
                 ", book='" + book + '\'' +
+                ", bookDescription='" + bookDescription + '\'' +
                 '}';
     }
 }

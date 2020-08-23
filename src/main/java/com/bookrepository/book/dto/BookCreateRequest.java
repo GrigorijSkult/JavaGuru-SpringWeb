@@ -1,39 +1,23 @@
-package com.bookrepository.book.domain;
+package com.bookrepository.book.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
-@Entity
-@Table(name = "books")
-public class BookEntity {
+public class BookCreateRequest {
 
-    @Id
-    private String id;
     @NotEmpty
-    @Size(min=1, max = 30)
+    @Size(min = 2, max = 20)
     private String bookName;
     @Size(max = 2000)
     private String bookDescription;
 
-    public BookEntity() {
+    public BookCreateRequest() {
     }
 
-    public BookEntity(String id, String bookName, String bookDescription) {
-        this.id = id;
+    public BookCreateRequest(@NotEmpty @Size(min = 2, max = 20) String bookName, @Size(max = 2000) String bookDescription) {
         this.bookName = bookName;
         this.bookDescription = bookDescription;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getBookName() {
@@ -52,27 +36,24 @@ public class BookEntity {
         this.bookDescription = bookDescription;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BookEntity that = (BookEntity) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(bookName, that.bookName) &&
+        BookCreateRequest that = (BookCreateRequest) o;
+        return Objects.equals(bookName, that.bookName) &&
                 Objects.equals(bookDescription, that.bookDescription);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, bookName, bookDescription);
+        return Objects.hash(bookName, bookDescription);
     }
 
     @Override
     public String toString() {
-        return "BookEntity{" +
-                "id='" + id + '\'' +
-                ", bookName='" + bookName + '\'' +
+        return "BookCreateRequest{" +
+                "bookName='" + bookName + '\'' +
                 ", bookDescription='" + bookDescription + '\'' +
                 '}';
     }
