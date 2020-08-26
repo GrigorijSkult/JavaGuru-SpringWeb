@@ -16,7 +16,7 @@ public class BookEntity {
     @NotEmpty
     @Size(min=1, max = 30)
     private String bookName;
-    @Size(max = 2000)
+    @Size(max = 255)
     private String bookDescription;
 
     public BookEntity() {
