@@ -2,7 +2,6 @@ package com.bookrepository.core;
 
 import com.bookrepository.core.exceptions.BookError;
 import com.bookrepository.core.exceptions.ItemNotFoundException;
-import com.bookrepository.core.exceptions.TechnicalException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -30,7 +29,7 @@ public class ExceptionController {
                     .body(new BookError(exception.getMessage()));
         }
 
-        if (exception instanceof TechnicalException) {
+        if (exception instanceof IllegalAccessException) {
             return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED)
                     .body(new BookError(exception.getMessage()));
         }
@@ -38,7 +37,5 @@ public class ExceptionController {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(new BookError(exception.getMessage()));
 
-        //Добавить
-        //не доступная база данных/не существует таблици -
     }
 }

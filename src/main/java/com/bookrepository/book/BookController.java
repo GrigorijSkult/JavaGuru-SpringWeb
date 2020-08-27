@@ -40,7 +40,7 @@ public class BookController {
     }
 
     @PostMapping
-    public ResponseEntity<BookResponse> createBook(@Valid @RequestBody BookCreateRequest newBookResponse, UriComponentsBuilder builder){
+    public ResponseEntity<BookResponse> createBook(@Valid @RequestBody BookCreateRequest newBookResponse, UriComponentsBuilder builder) throws IllegalAccessException {
         System.out.println("Received request, add new book " + newBookResponse);
         BookResponse response = bookService.saveBook(newBookResponse);
         return ResponseEntity.created(

@@ -1,11 +1,11 @@
 package com.bookrepository.book;
 
-import com.bookrepository.book.restapi.ApiRequests;
 import com.bookrepository.book.domain.BookEntity;
 import com.bookrepository.book.dto.BookCreateRequest;
 import com.bookrepository.book.dto.BookResponse;
 import com.bookrepository.book.dto.BookUpdateRequest;
 import com.bookrepository.book.mappers.BookMapper;
+import com.bookrepository.core.apirequests.QuoteService;
 import com.bookrepository.core.exceptions.ItemNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -19,19 +19,19 @@ public class BookService {
 
     private final BookMapper bookMapper;
     private final BookRepository bookRepository;
-    private final ApiRequests apiRequests;
+    private final QuoteService quoteService;
 
-    public BookService(BookMapper bookMapper, BookRepository bookRepository, ApiRequests apiRequests) {
+    public BookService(BookMapper bookMapper, BookRepository bookRepository, QuoteService quoteService) {
         this.bookMapper = bookMapper;
         this.bookRepository = bookRepository;
-        this.apiRequests = apiRequests;
+        this.quoteService = quoteService;
     }
 
-    public BookResponse saveBook(BookCreateRequest newBook){
+    public BookResponse saveBook(BookCreateRequest newBook) throws IllegalAccessException {
         BookEntity bookEntity = new BookEntity(
                 UUID.randomUUID().toString(),
                 newBook.getBookName(),
-                apiRequests.getApiRequest().getDescription());
+                quoteService.getUrlApiRandomRequest().getDescription());
         return bookMapper.bookToResponse(bookRepository.save(bookEntity));
     }
 

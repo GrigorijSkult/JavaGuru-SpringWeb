@@ -11,13 +11,13 @@ public class BookUpdateRequest {
     @NotEmpty
     @Size(min = 2, max = 20)
     String bookName;
-    @Size(max = 2000)
+    @Size(max = 255)
     private String bookDescription;
 
     public BookUpdateRequest() {
     }
 
-    public BookUpdateRequest(@NotEmpty String id, @NotEmpty @Size(min = 2, max = 20) String bookName, @Size(max = 2000) String bookDescription) {
+    public BookUpdateRequest(@NotEmpty String id, @NotEmpty @Size(min = 2, max = 20) String bookName, @Size(max = 255) String bookDescription) {
         this.id = id;
         this.bookName = bookName;
         this.bookDescription = bookDescription;

@@ -9,13 +9,13 @@ public class BookCreateRequest {
     @NotEmpty
     @Size(min = 2, max = 20)
     private String bookName;
-    @Size(max = 2000)
+    @Size(max = 255)
     private String bookDescription;
 
     public BookCreateRequest() {
     }
 
-    public BookCreateRequest(@NotEmpty @Size(min = 2, max = 20) String bookName, @Size(max = 2000) String bookDescription) {
+    public BookCreateRequest(@NotEmpty @Size(min = 2, max = 20) String bookName, @Size(max = 255) String bookDescription) {
         this.bookName = bookName;
         this.bookDescription = bookDescription;
     }
